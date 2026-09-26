@@ -4,37 +4,18 @@ MediBridge is a **PATIENT-ONLY, multilingual medical-record hub**.
 
 *Promise: “Your medical records. Clear explanations. In your language.”*
 
-## 🚀 Deployment Status & Required Actions
+## 🚀 Deployment Status
 
-**Action Required:** Automated deployment to GitHub and Vercel could not be completed because `git` and `gh` CLI are not installed, and `vercel` CLI is not logged in. Please perform the following steps to deploy the application:
+**Repository:** [https://github.com/harshakeerthan91/medibridge](https://github.com/harshakeerthan91/medibridge)
+**Production URL:** [https://medibridge-ten.vercel.app](https://medibridge-ten.vercel.app)
 
-1. **Install Git:** Download and install [Git for Windows](https://gitforwindows.org/).
-2. **Push to GitHub:**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   gh repo create medibridge --private --source=. --remote=origin --push
-   ```
-3. **Deploy to Vercel:**
-   ```bash
-   npx vercel login
-   npx vercel --prod
-   ```
-4. **Configure Vercel Environment Variables:** In the Vercel Dashboard, set the following environment variables (found in `.env.local`):
-   - `NEXT_PUBLIC_APP_URL` (set to your new Vercel production URL)
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-   - `GROQ_API_KEY`
-   - `GROQ_CHAT_MODEL`
-   - `GEMINI_API_KEY`
-   - `GEMINI_DOCUMENT_MODEL`
-   After setting these, redeploy the project in Vercel.
-5. **Configure Supabase Auth Redirects:** Go to your Supabase project > Authentication > URL Configuration.
-   - Set **Site URL** to `https://<YOUR_VERCEL_PROJECT_URL>`.
-   - Add `https://<YOUR_VERCEL_PROJECT_URL>/**` to **Redirect URLs**.
+**Remaining Manual Action - Supabase Redirects:**
+You must configure Supabase to allow authentication from the production URL.
+1. Go to your Supabase project > Authentication > URL Configuration.
+2. Set **Site URL** exactly to: `https://medibridge-ten.vercel.app`
+3. Add `https://medibridge-ten.vercel.app/**` to **Redirect URLs**.
 
-Once deployed, update this README with your actual Repository URL and Production URL.
+This ensures password resets and logins route correctly to production.
 
 ## 🛠 WHAT I NEED TO DO MANUALLY — STEP-BY-STEP SETUP
 
